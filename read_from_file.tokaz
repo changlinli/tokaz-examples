@@ -1,0 +1,14 @@
+fn main(): Task(Unit) = ~effect(task_effect) {
+  val file_contents = !read_file("this_file")
+  val length_of_contents = length(file_contents)
+  !println(s"{length_of_contents}")
+}
+
+fn concurrently(T: Type, tasks: List(Task(T))): Task(List(T)) = undefined
+
+fn concurrently_with_proof(
+  T : Type,
+  tasks: List(Task(T)),
+): Task((* xs: List(T), length(xs) = length(tasks) *)) = undefined
+
+// How to have a function that can convert concurrently to concurrently_with_proof?
